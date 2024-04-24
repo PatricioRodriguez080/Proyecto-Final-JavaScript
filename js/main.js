@@ -16,13 +16,19 @@ function main(arrayProductos) {
 
     let botonBuscar = document.getElementById("botonBuscar")
     botonBuscar.addEventListener("click", (e) => filtrarYRenderizar(arrayProductos))
-    
+
 }
 
-function desplegar() {
+function desplegar(event) {
+
+    event.stopPropagation();
 
     let contenedorCarrito = document.getElementById("contenidoCarrito")
     contenedorCarrito.classList.toggle("hide")
+}
+
+function detenerCierre(event) {
+    event.stopPropagation();
 }
 
 function obtenerCarritoLS() {

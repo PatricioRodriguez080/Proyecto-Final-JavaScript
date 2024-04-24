@@ -31,12 +31,12 @@
             <div class="container-logo">
                 <img src="./media/logo.svg" alt="logo">
             </div>
-            <div class="container-logo-carrito" onclick="desplegar()">
+            <div class="container-logo-carrito" onclick="desplegar(event)">
                 <div class="container-logo-y-contador">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <strong id="contadorElementosCarrito">0</strong>
                 </div>
-                <div id="contenidoCarrito" class="contenido-carrito hide">
+                <div id="contenidoCarrito" class="contenido-carrito hide" onclick="detenerCierre(event)">
                     <p id="textoCarritoVacio">Carrito Vacio</p>
                     <div id="productosEnCarrito" class="productos-en-carrito">
                         <!-- Aca van los productos que agrego al carrito -->
