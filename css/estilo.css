@@ -1,0 +1,160 @@
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-logo {
+  width: 45px;
+  height: 40px;
+}
+
+.contenido-carrito {
+  width: 380px;
+  height: 700px;
+  position: absolute;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.532);
+  z-index: 10;
+}
+
+.container-logo-carrito {
+  position: relative;
+}
+
+#contadorElementosCarrito {
+  display: inline-block;
+  width: 20px;
+  aspect-ratio: 1;
+  text-align: center;
+  position: absolute;
+  top: -8px;
+  right: 1px;
+  background-color: blue;
+  color: white;
+  border-radius: 100%;
+  font-size: 16px;
+}
+
+.fa-cart-shopping {
+  cursor: pointer;
+  font-size: 40px;
+  position: relative;
+}
+
+strong {
+  border-radius: 50px;
+  font-size: 20px;
+}
+
+#textoCarritoVacio {
+  color: black;
+  text-align: center;
+}
+
+.contenido-carrito > button {
+  width: auto;
+  color: white;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.container-buscador {
+  position: relative;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+}
+.container-buscador #inputTexto {
+  width: 100%;
+  padding: 8px 40px 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: grey;
+  color: white;
+}
+.container-buscador #botonBuscar {
+  position: absolute;
+  right: 13px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  height: 32px;
+  border-radius: 25px;
+  background-color: darkslategray;
+}
+.container-buscador #botonBuscar img {
+  height: 20px;
+  width: auto;
+  display: block;
+}
+
+#slider-1 {
+  cursor: pointer;
+}
+
+#containerZapas a {
+  text-decoration: none;
+}
+#containerZapas h6 {
+  font-size: 13px;
+  color: grey;
+}
+#containerZapas img {
+  width: 100%;
+  height: 100%;
+}
+#containerZapas .colZapasIndex {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+#containerZapas .swiper-pagination span {
+  background: grey;
+}
+
+.container-borrar {
+  margin-left: 40px;
+}
+.container-borrar .fa-trash {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 4px;
+  background-color: gray;
+  color: darkslategray;
+}
+
+#tituloTotal {
+  margin-left: 19px;
+}
+
+/*# sourceMappingURL=estilo.css.map */
