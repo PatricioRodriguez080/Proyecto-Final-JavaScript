@@ -19,28 +19,21 @@ function main(arrayProductos) {
 
 }
 
-function desplegar(event) {
+function desplegar(e) {
 
-    event.stopPropagation();
+    e.stopPropagation();
 
     let contenedorCarrito = document.getElementById("contenidoCarrito")
     contenedorCarrito.classList.toggle("hide")
 }
 
-function detenerCierre(event) {
-    event.stopPropagation();
+function detenerCierre(e) {
+    e.stopPropagation();
 }
 
 function obtenerCarritoLS() {
-
-    let arrayCarrito = []
-    let arrayCarritoLocalStorage = JSON.parse(localStorage.getItem("arrayCarrito"))
-
-    if (arrayCarritoLocalStorage) {
-        arrayCarrito = arrayCarritoLocalStorage
-    }
-
-    return arrayCarrito
+    // si existe retorno lo que recupero, sino retorno un array vacio //
+    return JSON.parse(localStorage.getItem("arrayCarrito")) || []
 }
 
 function crearTarjetasProductos(productosElegidos) {
