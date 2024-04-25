@@ -42,7 +42,7 @@ function crearTarjetasProductos(productosElegidos) {
     contenedorTarjetas.innerHTML = ""
 
     // Desestructuro el producto leido y creo variables con las propiedades que yo quiera de ese producto leido //
-    productosElegidos.forEach(({id, nombre, categoria, descrip, img1, img2, img3}) => {
+    productosElegidos.forEach(({ id, nombre, categoria, descrip, img1, img2, img3 }) => {
 
         let tarjetaProducto = document.createElement("div")
         tarjetaProducto.classList.add("col-lg-3")
@@ -110,7 +110,7 @@ function agregarAlCarrito(e, arrayProductos) {
     if (posProdcutoEnCarrito != -1) {
         arrayCarrito[posProdcutoEnCarrito].unidades++
         arrayCarrito[posProdcutoEnCarrito].subtotal = arrayCarrito[posProdcutoEnCarrito].precioUnitario * arrayCarrito[posProdcutoEnCarrito].unidades
-    }else{
+    } else {
         arrayCarrito.push({
             id: productoBuscado.id,
             nombre: productoBuscado.nombre,
@@ -129,6 +129,15 @@ function agregarAlCarrito(e, arrayProductos) {
     renderizarCarrito(arrayCarrito)
     mostrarOcultarMensajeCarrito()
     ContadorProductosCarrito()
+    Toastify({
+        text: "Producto agregado",
+        duration: 1000,
+        gravity: "bottom",
+        position: "right",
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+    }).showToast();
 }
 
 function mostrarOcultarMensajeCarrito() {
@@ -137,7 +146,7 @@ function mostrarOcultarMensajeCarrito() {
     let mensajeCarritoVacio = document.getElementById("textoCarritoVacio");
     let tituloTotal = document.getElementById("tituloTotal")
     let botonFinalizarCompra = document.getElementById("BtnFinalizarCompra")
-    
+
     if (arrayCarrito && arrayCarrito.length > 0) {
         ocultar(mensajeCarritoVacio)
         mostrar(tituloTotal)
@@ -162,12 +171,12 @@ function ocultar(nodo) {
 function renderizarCarrito(arrayCarrito) {
 
     mostrarOcultarMensajeCarrito()
-    
+
     let contenedorCarrito = document.getElementById("productosEnCarrito")
     contenedorCarrito.innerHTML = ""
 
     // Desestructuro el producto leido y me guardo en nuevas variables las propiedades que coincidan con el nombre dado//
-    arrayCarrito.forEach(({id, nombre, categoria, unidades, subtotal, img1}) => {
+    arrayCarrito.forEach(({ id, nombre, categoria, unidades, subtotal, img1 }) => {
 
         let tarjetaProducto = document.createElement("div")
         tarjetaProducto.id = `tarjetaProducto${id}`
@@ -201,7 +210,25 @@ function renderizarCarrito(arrayCarrito) {
 
         let botonFinalizarCompra = document.getElementById("BtnFinalizarCompra")
         botonFinalizarCompra.addEventListener("click", (e) => {
-            finalizarCompra(contenedorCarrito)
+            Swal.fire({
+                title: "Quiere finalizar la compra?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirmar!",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    finalizarCompra(contenedorCarrito)
+                    Swal.fire({
+                        title: "Compra Exitosa!",
+                        text: "Sus productos fueron confirmados",
+                        icon: "success"
+                    });
+                }
+            });
         })
 
         ContadorProductosCarrito()
@@ -237,23 +264,32 @@ function eliminarProductoDelCarrito(e) {
     mostrarOcultarMensajeCarrito()
     ContadorProductosCarrito()
     totalCarrito()
+    Toastify({
+        text: "Producto eliminado",
+        duration: 1000,
+        gravity: "bottom",
+        position: "right",
+        style: {
+            background: "linear-gradient(to right, #ff0000, #ff6666)"
+        },
+    }).showToast();
 }
 
 function finalizarCompra(contenedorCarrito) {
-    
+
     localStorage.removeItem("arrayCarrito")
-    renderizarCarrito([],contenedorCarrito)
+    renderizarCarrito([], contenedorCarrito)
     mostrarOcultarMensajeCarrito()
     ContadorProductosCarrito()
 }
 
 function ContadorProductosCarrito() {
-    
+
     let contador = document.getElementById("contadorElementosCarrito")
     let cant = 0
     arrayCarrito = obtenerCarritoLS()
     arrayCarrito.forEach(producto => cant++)
-    
+
     contador.innerText = cant
 }
 
@@ -266,7 +302,7 @@ function filtrarYRenderizarEnter(arrayProductos, e) {
 }
 
 function filtrarYRenderizar(arrayProductos) {
-    let arrayResultado = filtrarProductos(arrayProductos) 
+    let arrayResultado = filtrarProductos(arrayProductos)
     renderizarProductos(arrayResultado)
 }
 
