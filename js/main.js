@@ -100,7 +100,6 @@ function crearTarjetasProductos(productosElegidos) {
 function agregarAlCarrito(e, arrayProductos) {
 
     let arrayCarrito = obtenerCarritoLS()
-    console.log("arrayCarrito:", arrayCarrito);
 
     let idDelProducto = e.target.id.substr(17)
 

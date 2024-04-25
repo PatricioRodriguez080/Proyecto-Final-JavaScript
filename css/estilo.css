@@ -131,6 +131,13 @@ strong {
 #containerZapas img {
   width: 100%;
   height: 100%;
+  border-radius: 60px;
+}
+#containerZapas button {
+  border: none;
+  background-color: darkslategray;
+  color: white;
+  border-radius: 5px;
 }
 #containerZapas .colZapasIndex {
   display: flex;
