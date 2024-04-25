@@ -185,7 +185,7 @@ function renderizarCarrito(arrayCarrito) {
         <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-4">
-                <img src="../media/productos/${categoria}/${nombre}/${img1}.jpg" alt="${nombre}" class="img-fluid rounded-start" alt="...">
+                <img src="./media/productos/${categoria}/${nombre}/${img1}.jpg" alt="${nombre}" class="img-fluid rounded-start">
             </div>
             <div class="col-8">
                 <div class="card-body d-flex">
