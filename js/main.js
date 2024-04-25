@@ -188,7 +188,7 @@ function renderizarCarrito(arrayCarrito) {
                 <img src="./media/productos/${categoria}/${nombre}/${img1}.jpg" alt="${nombre}" class="img-fluid rounded-start">
             </div>
             <div class="col-8">
-                <div class="card-body d-flex">
+                <div class="card-body card-body-carrito d-flex">
                     <div class="container-informaciones d-flex flex-column">
                         <h5 class="card-title">${nombre}</h5>
                         <p class="card-text">${unidades}</p>
