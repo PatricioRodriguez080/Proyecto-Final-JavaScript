@@ -41,7 +41,9 @@ function crearTarjetasProductos(productosElegidos) {
     const contenedorTarjetas = document.getElementById("containerZapas")
     contenedorTarjetas.innerHTML = ""
 
-    productosElegidos.forEach((producto) => {
+    // Desestructuro el producto leido y creo variables con las propiedades que yo quiera de ese producto leido //
+    productosElegidos.forEach(({id, nombre, categoria, descrip, img1, img2, img3}) => {
+
         let tarjetaProducto = document.createElement("div")
         tarjetaProducto.classList.add("col-lg-3")
         tarjetaProducto.classList.add("col-md-6")
@@ -54,23 +56,23 @@ function crearTarjetasProductos(productosElegidos) {
                         <div class="swiper" id="swiper-1">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="./media/productos/${producto.categoria}/${producto.nombre}/${producto.img1}.jpg" alt="${producto.nombre}">
+                                    <img src="./media/productos/${categoria}/${nombre}/${img1}.jpg" alt="${nombre}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="./media/productos/${producto.categoria}/${producto.nombre}/${producto.img2}.jpg" alt="${producto.nombre}">
+                                    <img src="./media/productos/${categoria}/${nombre}/${img2}.jpg" alt="${nombre}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="./media/productos/${producto.categoria}/${producto.nombre}/${producto.img3}.jpg" alt="${producto.nombre}">
+                                    <img src="./media/productos/${categoria}/${nombre}/${img3}.jpg" alt="${nombre}">
                                 </div>
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">${producto.nombre}</h5>
-                        <h6>${producto.descrip}</h6>
+                    <div class="card-body"
+                        <h5 class="card-title">${nombre}</h5>
+                        <h6>${descrip}</h6>
                         <div class="containerPrecioColores d-flex justify-content-between align-items-center mt-3">
-                            <button id="btnAgregarCarrito${producto.id}">Agregar</button>
+                            <button id="btnAgregarCarrito${id}">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -79,7 +81,7 @@ function crearTarjetasProductos(productosElegidos) {
 
         contenedorTarjetas.appendChild(tarjetaProducto)
 
-        let botonAgregarAlCarrito = document.getElementById(`btnAgregarCarrito${producto.id}`)
+        let botonAgregarAlCarrito = document.getElementById(`btnAgregarCarrito${id}`)
         botonAgregarAlCarrito.addEventListener("click", (e) => {
             agregarAlCarrito(e, productosElegidos)
         })
@@ -164,26 +166,27 @@ function renderizarCarrito(arrayCarrito) {
     let contenedorCarrito = document.getElementById("productosEnCarrito")
     contenedorCarrito.innerHTML = ""
 
-    arrayCarrito.forEach(producto => {
+    // Desestructuro el producto leido y me guardo en nuevas variables las propiedades que coincidan con el nombre dado//
+    arrayCarrito.forEach(({id, nombre, categoria, unidades, subtotal, img1}) => {
 
         let tarjetaProducto = document.createElement("div")
-        tarjetaProducto.id = `tarjetaProducto${producto.id}`
+        tarjetaProducto.id = `tarjetaProducto${id}`
 
         tarjetaProducto.innerHTML = `
         <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-4">
-                <img src="../media/productos/${producto.categoria}/${producto.nombre}/${producto.img1}.jpg" alt="${producto.nombre}" class="img-fluid rounded-start" alt="...">
+                <img src="../media/productos/${categoria}/${nombre}/${img1}.jpg" alt="${nombre}" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-8">
                 <div class="card-body d-flex">
                     <div class="container-informaciones d-flex flex-column">
-                        <h5 class="card-title">${producto.nombre}</h5>
-                        <p class="card-text">${producto.unidades}</p>
-                        <p class="card-text"><small class="text-body-secondary">$${producto.subtotal}</small></p>
+                        <h5 class="card-title">${nombre}</h5>
+                        <p class="card-text">${unidades}</p>
+                        <p class="card-text"><small class="text-body-secondary">$${subtotal}</small></p>
                     </div>
                     <div class="container-borrar">
-                        <i id="boton-eliminar${producto.id}" class="fa-solid fa-trash"></i>
+                        <i id="boton-eliminar${id}" class="fa-solid fa-trash"></i>
                     </div>
                 </div>
             </div>
@@ -193,7 +196,7 @@ function renderizarCarrito(arrayCarrito) {
 
         contenedorCarrito.appendChild(tarjetaProducto)
 
-        let botonEliminar = document.getElementById(`boton-eliminar${producto.id}`)
+        let botonEliminar = document.getElementById(`boton-eliminar${id}`)
         botonEliminar.addEventListener("click", eliminarProductoDelCarrito)
 
         let botonFinalizarCompra = document.getElementById("BtnFinalizarCompra")
