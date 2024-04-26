@@ -190,7 +190,11 @@ function renderizarCarrito(arrayCarrito) {
                 <div class="card-body card-body-carrito d-flex">
                     <div class="container-informaciones d-flex flex-column">
                         <h5 class="card-title">${nombre}</h5>
-                        <p class="card-text">${unidades}</p>
+                        <div class="container-unidades d-flex">
+                            <i id="botonMenos${id}" class="fa-solid fa-minus"></i>
+                            <p id="textoUnidades${id}" class="card-text">${unidades}</p>
+                            <i id="botonMas${id}" class="fa-solid fa-plus"></i>
+                        </div>
                         <p class="card-text"><small class="text-body-secondary">$${subtotal}</small></p>
                     </div>
                     <div class="container-borrar">
@@ -203,6 +207,12 @@ function renderizarCarrito(arrayCarrito) {
         `
 
         contenedorCarrito.appendChild(tarjetaProducto)
+
+        let botonMenos = document.getElementById(`botonMenos${id}`)
+        botonMenos.addEventListener("click", restarUnidad)
+
+        let botonMas = document.getElementById(`botonMas${id}`)
+        botonMas.addEventListener("click", agregarUnidad)
 
         let botonEliminar = document.getElementById(`boton-eliminar${id}`)
         botonEliminar.addEventListener("click", eliminarProductoDelCarrito)
@@ -235,9 +245,53 @@ function renderizarCarrito(arrayCarrito) {
     })
 }
 
+function restarUnidad(e) {
+
+    let arrayCarrito = obtenerCarritoLS()
+
+    let idProducto = e.target.id.substr(10)
+
+    let indiceProducto = arrayCarrito.findIndex(({ id }) => id == idProducto)
+    if (indiceProducto !== -1) {
+
+        if (arrayCarrito[indiceProducto].unidades > 1) {
+            arrayCarrito[indiceProducto].unidades--
+            arrayCarrito[indiceProducto].subtotal = arrayCarrito[indiceProducto].precioUnitario * arrayCarrito[indiceProducto].unidades
+        } else {
+            arrayCarrito.splice(indiceProducto, 1)
+        }
+
+        // Actualizo el carrito del LS para luego renderizar ese mismo con las modificaciones hechas //
+        localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito))
+        totalCarrito()
+        ContadorProductosCarrito()
+        renderizarCarrito(arrayCarrito)
+    }
+}
+
+function agregarUnidad(e) {
+
+    let arrayCarrito = obtenerCarritoLS()
+
+    let idProducto = e.target.id.substr(8)
+
+    let indiceProducto = arrayCarrito.findIndex(({ id }) => id == idProducto)
+    if (indiceProducto !== -1) {
+
+        arrayCarrito[indiceProducto].unidades++
+        arrayCarrito[indiceProducto].subtotal = arrayCarrito[indiceProducto].precioUnitario * arrayCarrito[indiceProducto].unidades
+
+        // Actualizo el carrito del LS para luego renderizar ese mismo con las modificaciones hechas //
+        localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito))
+        totalCarrito()
+        ContadorProductosCarrito()
+        renderizarCarrito(arrayCarrito)
+    }
+}
+
 function totalCarrito() {
 
-    arrayCarrito = obtenerCarritoLS()
+    let arrayCarrito = obtenerCarritoLS()
     tituloTotal = document.getElementById("tituloTotal")
     total = arrayCarrito.reduce((acumulador, producto) => acumulador + producto.subtotal, 0)
     tituloTotal.innerText = `
