@@ -17,6 +17,11 @@ function main(arrayProductos) {
     let botonBuscar = document.getElementById("botonBuscar")
     botonBuscar.addEventListener("click", (e) => filtrarYRenderizar(arrayProductos))
 
+    let dropdowns = document.querySelectorAll(".list-button-click")
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener("click", mostrarOcultarOpciones)
+    })
+
 }
 
 function desplegar(e) {
@@ -370,4 +375,13 @@ function filtrarProductos(arrayProductos) {
 
 function renderizarProductos(arrayProductosFiltrados) {
     crearTarjetasProductos(arrayProductosFiltrados)
+}
+
+function mostrarOcultarOpciones(e) {
+
+    let dropdown = e.currentTarget; // me guardo en dropdown los datos del evento //
+    let opciones = dropdown.nextElementSibling; // ahora me guardo en opciones el siguiente elemento al dropdown guardado anteriormente, en este caso el menu de opciones //
+
+    opciones.classList.toggle("hide");
+    dropdown.classList.toggle("arrow")
 }

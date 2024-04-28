@@ -1,0 +1,36 @@
+.container-filtros{
+    display: flex;
+    justify-content: space-around;
+}
+
+.list-item{
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.list-button{
+    display: flex;
+    align-items: center;
+    img{
+        width: 12px;
+        height: 12px;
+        margin: 0px 0px 2px 4px;
+    }
+}
+
+.arrow .list-arrow{
+    transform: rotate(90deg);
+}
+
+.list-arrow{
+    transition: transform .3s;
+}
+
+
+.list-options{
+    padding: 0;
+    
+    .list-inside{
+        list-style: none;
+    }
+}
