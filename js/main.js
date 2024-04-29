@@ -413,11 +413,36 @@ function filtradoDeOpciones(arrayProductos) {
 
     let opcionesCategoria = document.querySelectorAll(".botones-categoria")
     opcionesCategoria.forEach(boton => {
-        boton.addEventListener("click", (e) => filtrarProductos(e, arrayProductos))
+        boton.addEventListener("click", (e) => filtrarProductosYCrearFiltros(e, arrayProductos))
     })
 }
 
-function filtrarProductos(e, arrayProductos) {
+function filtrarProductosYCrearFiltros(e, arrayProductos) {
+
+    let categoriaSeleccionada = e.target.innerText
     arrayResultado = arrayProductos.filter(producto => producto.categoria == e.target.innerText)
     crearTarjetasProductos(arrayResultado)
+
+    // Relleno los filtros segun por que categoria estoy filtrando //
+    const contenedorFiltros = document.getElementById("container-filtros")
+    let arrayDeFiltros = ""
+    contenedorFiltros.innerHTML = ""
+
+    arrayResultado.forEach(producto => {
+        if (!arrayDeFiltros.includes(producto.modelo)) {
+            arrayDeFiltros += producto.modelo
+            contenedorFiltros.innerHTML += `
+                <p id="filtros-${producto.modelo}" class="botones-filtro">${producto.modelo}</p>
+            `
+        }
+    })
+
+    // Le doy funcionalidad a esos botones de filtro creados//
+    const botonesFiltro = document.querySelectorAll(".botones-filtro")
+    botonesFiltro.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+            arrayResultado = arrayProductos.filter(producto => producto.modelo.includes(e.target.id.substr(8)) && producto.categoria == categoriaSeleccionada)
+            crearTarjetasProductos(arrayResultado)
+        })
+    })
 }
