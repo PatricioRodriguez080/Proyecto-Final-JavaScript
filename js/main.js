@@ -19,7 +19,7 @@ function main(arrayProductos) {
 
     let dropdowns = document.querySelectorAll(".list-button-click")
     dropdowns.forEach(dropdown => {
-        dropdown.addEventListener("click", mostrarOcultarOpciones)
+        dropdown.addEventListener("click", (e) => funcionalidadesDropdowns(e, arrayProductos))
     })
 
 }
@@ -354,7 +354,7 @@ function ContadorProductosCarrito() {
 function filtrarYRenderizarEnter(arrayProductos, e) {
 
     if (e.keyCode == 13) {
-        let productosFiltrados = filtrarProductos(arrayProductos)
+        let productosFiltrados = filtrarProductosBarraBusqueda(arrayProductos)
         renderizarProductos(productosFiltrados)
     }
 }
@@ -364,7 +364,7 @@ function filtrarYRenderizar(arrayProductos) {
     renderizarProductos(arrayResultado)
 }
 
-function filtrarProductos(arrayProductos) {
+function filtrarProductosBarraBusqueda(arrayProductos) {
 
     let inputBusqueda = document.getElementById("inputTexto").value.toLowerCase();
 
@@ -377,11 +377,47 @@ function renderizarProductos(arrayProductosFiltrados) {
     crearTarjetasProductos(arrayProductosFiltrados)
 }
 
-function mostrarOcultarOpciones(e) {
+function funcionalidadesDropdowns(e, arrayProductos) {
+    mostrarOcultarOpciones(e)
+    filtradoDeOpciones(arrayProductos)
+}
 
+function mostrarOcultarOpciones(e) {
     let dropdown = e.currentTarget; // me guardo en dropdown los datos del evento //
     let opciones = dropdown.nextElementSibling; // ahora me guardo en opciones el siguiente elemento al dropdown guardado anteriormente, en este caso el menu de opciones //
 
     opciones.classList.toggle("hide");
     dropdown.classList.toggle("arrow")
+}
+
+function filtradoDeOpciones(arrayProductos) {
+
+    let arrayCategorias = []
+
+    arrayProductos.forEach(producto => {
+
+        if (!arrayCategorias.includes(producto.categoria)) {
+            arrayCategorias.push(producto.categoria)
+        }
+    })
+
+    let contenedorCategorias = document.getElementById("lista-categorias")
+    contenedorCategorias.innerHTML = ""
+
+    arrayCategorias.forEach(categoria => {
+
+        contenedorCategorias.innerHTML += `
+            <h6 class="botones-categoria">${categoria}</h6>
+        `
+    })
+
+    let opcionesCategoria = document.querySelectorAll(".botones-categoria")
+    opcionesCategoria.forEach(boton => {
+        boton.addEventListener("click", (e) => filtrarProductos(e, arrayProductos))
+    })
+}
+
+function filtrarProductos(e, arrayProductos) {
+    arrayResultado = arrayProductos.filter(producto => producto.categoria == e.target.innerText)
+    crearTarjetasProductos(arrayResultado)
 }

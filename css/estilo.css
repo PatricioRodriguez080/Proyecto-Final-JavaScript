@@ -124,6 +124,7 @@ strong {
 
 .list-item {
   list-style-type: none;
+  width: 200px;
   cursor: pointer;
 }
 
