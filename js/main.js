@@ -26,14 +26,14 @@ function main(arrayProductos) {
 
 function desplegar(e) {
 
-    e.stopPropagation();
+    e.stopPropagation()
 
     let contenedorCarrito = document.getElementById("contenidoCarrito")
     contenedorCarrito.classList.toggle("hide")
 }
 
 function detenerCierre(e) {
-    e.stopPropagation();
+    e.stopPropagation()
 }
 
 function obtenerCarritoLS() {
@@ -141,13 +141,13 @@ function agregarAlCarrito(e, arrayProductos) {
         style: {
             background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
-    }).showToast();
+    }).showToast()
 }
 
 function mostrarOcultarMensajeCarrito() {
 
-    let arrayCarrito = obtenerCarritoLS();
-    let mensajeCarritoVacio = document.getElementById("textoCarritoVacio");
+    let arrayCarrito = obtenerCarritoLS()
+    let mensajeCarritoVacio = document.getElementById("textoCarritoVacio")
     let tituloTotal = document.getElementById("tituloTotal")
     let botonFinalizarCompra = document.getElementById("BtnFinalizarCompra")
 
@@ -240,9 +240,9 @@ function renderizarCarrito(arrayCarrito) {
                         title: "Compra Exitosa!",
                         text: "Sus productos fueron confirmados",
                         icon: "success"
-                    });
+                    })
                 }
-            });
+            })
         })
 
         ContadorProductosCarrito()
@@ -306,18 +306,18 @@ function totalCarrito() {
 
 function eliminarProductoDelCarrito(e) {
 
-    let id = e.target.id.substr(14);
-    let filaAEliminar = document.getElementById(`tarjetaProducto${id}`);
-    filaAEliminar.remove();
+    let id = e.target.id.substr(14)
+    let filaAEliminar = document.getElementById(`tarjetaProducto${id}`)
+    filaAEliminar.remove()
 
     // Me traigo el carrito del LS //
     let carrito = obtenerCarritoLS()
 
     // Me guardo en el carrito todos los productos que ya estaban menos el que quiero eliminar //
-    carrito = carrito.filter(producto => producto.id != id);
+    carrito = carrito.filter(producto => producto.id != id)
 
     // Actualizo el LS con el contenido filtrado //
-    localStorage.setItem("arrayCarrito", JSON.stringify(carrito));
+    localStorage.setItem("arrayCarrito", JSON.stringify(carrito))
 
     mostrarOcultarMensajeCarrito()
     ContadorProductosCarrito()
@@ -330,7 +330,7 @@ function eliminarProductoDelCarrito(e) {
         style: {
             background: "linear-gradient(to right, #ff0000, #ff6666)"
         },
-    }).showToast();
+    }).showToast()
 }
 
 function finalizarCompra(contenedorCarrito) {
@@ -366,11 +366,11 @@ function filtrarYRenderizar(arrayProductos) {
 
 function filtrarProductosBarraBusqueda(arrayProductos) {
 
-    let inputBusqueda = document.getElementById("inputTexto").value.toLowerCase();
+    let inputBusqueda = document.getElementById("inputTexto").value.toLowerCase()
 
-    let resultado = arrayProductos.filter(producto => producto.nombre.toLowerCase().includes(inputBusqueda));
+    let resultado = arrayProductos.filter(producto => producto.nombre.toLowerCase().includes(inputBusqueda))
 
-    return resultado;
+    return resultado
 }
 
 function renderizarProductos(arrayProductosFiltrados) {
@@ -386,7 +386,7 @@ function mostrarOcultarOpciones(e) {
     let dropdown = e.currentTarget; // me guardo en dropdown los datos del evento //
     let opciones = dropdown.nextElementSibling; // ahora me guardo en opciones el siguiente elemento al dropdown guardado anteriormente, en este caso el menu de opciones //
 
-    opciones.classList.toggle("hide");
+    opciones.classList.toggle("hide")
     dropdown.classList.toggle("arrow")
 }
 
