@@ -92,7 +92,6 @@ function crearTarjetasProductos(productosElegidos) {
         })
     })
 
-
     // Inicializo Swiper después de agregar todas las tarjetas al DOM //
     new Swiper("#swiper-1", {
         effect: "fade",
