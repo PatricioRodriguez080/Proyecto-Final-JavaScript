@@ -358,7 +358,7 @@ function filtrarYRenderizarEnter(arrayProductos, e) {
 }
 
 function filtrarYRenderizar(arrayProductos) {
-    let arrayResultado = filtrarProductos(arrayProductos)
+    let arrayResultado = filtrarProductosBarraBusqueda(arrayProductos)
     renderizarProductos(arrayResultado)
 }
 
