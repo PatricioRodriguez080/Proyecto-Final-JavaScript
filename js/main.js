@@ -1,9 +1,10 @@
-main(arrayProductos)
+main()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function main(arrayProductos) {
+async function main() {
 
+    let arrayProductos = await pedirInfo()
     let arrayCarrito = obtenerCarritoLS()
 
     renderizarCarrito(arrayCarrito)
@@ -34,6 +35,16 @@ function desplegar(e) {
 
 function detenerCierre(e) {
     e.stopPropagation()
+}
+
+async function pedirInfo() {
+    try {
+        const response = await fetch("../productos.json")
+        const arrayProductos = await response.json()
+        return arrayProductos
+    } catch (error) {
+        console.log("Algo paso")
+    }
 }
 
 function obtenerCarritoLS() {
