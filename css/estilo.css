@@ -73,7 +73,7 @@ strong {
   text-align: center;
 }
 
-.contenido-carrito > button {
+.contenido-carrito > a button {
   width: auto;
   color: white;
   background-color: darkslategray;
@@ -226,6 +226,10 @@ strong {
 }
 #containerZapas .swiper-pagination span {
   background: grey;
+}
+
+#container-compra img {
+  width: 200px;
 }
 
 .card-body-carrito {
