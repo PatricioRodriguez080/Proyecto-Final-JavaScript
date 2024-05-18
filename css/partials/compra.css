@@ -1,0 +1,27 @@
+#container-compra {
+  padding-top: 20px;
+}
+#container-compra .card-compra {
+  margin: auto;
+}
+#container-compra .card-compra img {
+  width: 200px;
+  height: 200px;
+}
+#container-compra .card-compra .card-info {
+  margin-top: 46px;
+}
+
+#BtnFinalizarCompraCompraFinal {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  background-color: darkslategray;
+  border: none;
+  border-radius: 5px;
+  margin: 0 63px;
+  padding: 4px 0px;
+  width: 90%;
+}
+
+/*# sourceMappingURL=compra.css.map */

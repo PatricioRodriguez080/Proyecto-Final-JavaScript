@@ -232,27 +232,7 @@ function renderizarCarrito(arrayCarrito) {
         let botonEliminar = document.getElementById(`boton-eliminar${id}`)
         botonEliminar.addEventListener("click", eliminarProductoDelCarrito)
 
-        let botonFinalizarCompra = document.getElementById("BtnFinalizarCompra")
-        botonFinalizarCompra.addEventListener("click", (e) => {
-            Swal.fire({
-                title: "Quiere finalizar la compra?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#2f4f4f",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Confirmar!",
-                cancelButtonText: "Cancelar"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    finalizarCompra(contenedorCarrito)
-                    Swal.fire({
-                        title: "Compra Exitosa!",
-                        text: "Sus productos fueron confirmados",
-                        icon: "success"
-                    })
-                }
-            })
-        })
+
 
         ContadorProductosCarrito()
         totalCarrito()

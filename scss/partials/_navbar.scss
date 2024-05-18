@@ -59,12 +59,15 @@ strong{
     text-align: center;
 }
 
-.contenido-carrito > button {
+.contenido-carrito > a {
+    text-decoration: none;
+    text-align: center;
     width: auto;
     color: white;
     background-color: darkslategray;
     border: none;
     border-radius: 5px;
     margin: 0 auto;
+    padding: 4px 0px;
     width: 90%;
 }
