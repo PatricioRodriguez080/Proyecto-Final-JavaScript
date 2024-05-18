@@ -2,8 +2,9 @@ main()
 
 function main() {
     arrayCarrito = obtenerCarritoLS()
-    crearCardsCompra()
-    totalCarritoYFinalizarCompra()
+    let contenedorCompra = document.getElementById("container-compra")
+    crearCardsCompra(arrayCarrito, contenedorCompra)
+    totalCarritoYFinalizarCompra(contenedorCompra)
 }
 
 function obtenerCarritoLS() {
@@ -11,8 +12,7 @@ function obtenerCarritoLS() {
     return JSON.parse(localStorage.getItem("arrayCarrito")) || []
 }
 
-function crearCardsCompra() {
-    let contenedorCompra = document.getElementById("container-compra")
+function crearCardsCompra(arrayCarrito,contenedorCompra) {
     contenedorCompra.innerHTML = ""
 
     arrayCarrito.forEach(({ id, nombre, categoria, unidades, subtotal, img1 }) => {
@@ -41,10 +41,10 @@ function crearCardsCompra() {
     })
 }
 
-function totalCarritoYFinalizarCompra() {
+function totalCarritoYFinalizarCompra(contenedorCompra) {
 
     let arrayCarrito = obtenerCarritoLS()
-    tituloTotal = document.getElementById("tituloTotal")
+    tituloTotal = document.getElementById("tituloTotal2")
     total = arrayCarrito.reduce((acumulador, producto) => acumulador + producto.subtotal, 0)
     tituloTotal.innerText = `
         Total: $${total}
@@ -66,6 +66,7 @@ function totalCarritoYFinalizarCompra() {
               emailjs.send('service_nghv868', 'template_4kptnsp', templateParams).then(
                 (response) => {
                   console.log('SUCCESS!', response.status, response.text);
+                  finalizarCompra(contenedorCompra, tituloTotal)
                 },
                 (error) => {
                   console.log('FAILED...', error);
@@ -73,4 +74,10 @@ function totalCarritoYFinalizarCompra() {
               );
         }
     })
+}
+
+function finalizarCompra(contenedor, tituloTotal) {
+    localStorage.removeItem("arrayCarrito")
+    crearCardsCompra([], contenedor)
+    tituloTotal.innerText = "Total: $0"
 }
