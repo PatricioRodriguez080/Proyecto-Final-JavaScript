@@ -23,10 +23,10 @@ function crearCardsCompra(arrayCarrito,contenedorCompra) {
         tarjetaProducto.innerHTML = `
         <div class="card card-compra mb-3" style="max-width: 540px;">
             <div class="row g-0">
-                <div class="col-md-4">
+                <div class="col">
                     <img src="../media/productos/${categoria}/${nombre}/${img1}.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
-                <div class="col-md-8">
+                <div class="col">
                     <div class="card-body card-info">
                         <h5 class="card-title">${nombre}</h5>
                         <p class="card-text">Unidades: ${unidades}</p>
