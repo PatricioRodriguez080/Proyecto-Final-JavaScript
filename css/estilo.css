@@ -73,9 +73,13 @@ strong {
   text-align: center;
 }
 
+<<<<<<< HEAD
 .contenido-carrito > a {
   text-decoration: none;
   text-align: center;
+=======
+.contenido-carrito > a button {
+>>>>>>> e17bf4e38f9f1abc7debbc92794c2b1dfd10e18e
   width: auto;
   color: white;
   background-color: darkslategray;
@@ -231,6 +235,7 @@ strong {
   background: grey;
 }
 
+<<<<<<< HEAD
 #container-compra {
   padding-top: 20px;
 }
@@ -255,6 +260,10 @@ strong {
   margin: 0 25%;
   padding: 4px 0px;
   width: 50%;
+=======
+#container-compra img {
+  width: 200px;
+>>>>>>> e17bf4e38f9f1abc7debbc92794c2b1dfd10e18e
 }
 
 .card-body-carrito {

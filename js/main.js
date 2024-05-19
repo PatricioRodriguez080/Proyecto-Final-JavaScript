@@ -233,7 +233,6 @@ function renderizarCarrito(arrayCarrito) {
         botonEliminar.addEventListener("click", eliminarProductoDelCarrito)
 
 
-
         ContadorProductosCarrito()
         totalCarrito()
     })
