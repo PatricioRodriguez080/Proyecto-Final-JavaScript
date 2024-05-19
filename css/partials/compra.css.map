@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"version":3,"sourceRoot":"","sources":["../../scss/partials/compra.scss"],"names":[],"mappings":"AAAA;EACI;;AAEA;EACI;;AAEA;EACI;EACA;;AAGJ;EACI;;;AAKZ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"compra.css"}
-=======
-{"version":3,"sourceRoot":"","sources":["../../scss/partials/compra.scss"],"names":[],"mappings":"AACI;EACI","file":"compra.css"}
->>>>>>> e17bf4e38f9f1abc7debbc92794c2b1dfd10e18e
+{"version":3,"sourceRoot":"","sources":["../../scss/partials/compra.scss"],"names":[],"mappings":"AAAA;EACI;;AAEA;EACI;;AAEA;EACI;EACA;;AAGJ;EACI;;;AAKZ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"compra.css"}
