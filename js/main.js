@@ -39,7 +39,7 @@ function detenerCierre(e) {
 
 async function pedirInfo() {
     try {
-        const response = await fetch("../productos.json")
+        const response = await fetch("./productos.json")
         const arrayProductos = await response.json()
         return arrayProductos
     } catch (error) {
