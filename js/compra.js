@@ -80,4 +80,8 @@ function finalizarCompra(contenedor, tituloTotal) {
     localStorage.removeItem("arrayCarrito")
     crearCardsCompra([], contenedor)
     tituloTotal.innerText = "Total: $0"
+    Swal.fire({
+        title: "Compra finalizada",
+        text: "Gracias por su compra",
+      });
 }
