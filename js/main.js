@@ -43,7 +43,7 @@ async function pedirInfo() {
         const arrayProductos = await response.json()
         return arrayProductos
     } catch (error) {
-        console.log("Algo paso")
+        console.log(`Algo paso ${error}`)
     }
 }
 
