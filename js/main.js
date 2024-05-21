@@ -58,7 +58,7 @@ function crearTarjetasProductos(productosElegidos) {
     contenedorTarjetas.innerHTML = ""
 
     // Desestructuro el producto leido y creo variables con las propiedades que yo quiera de ese producto leido //
-    productosElegidos.forEach(({ id, nombre, categoria, descrip, img1, img2, img3 }) => {
+    productosElegidos.forEach(({ id, nombre, categoria, descrip,precio, img1, img2, img3 }) => {
 
         let tarjetaProducto = document.createElement("div")
         tarjetaProducto.classList.add("col-lg-3")
@@ -87,6 +87,7 @@ function crearTarjetasProductos(productosElegidos) {
                     <div class="card-body"
                         <h5 class="card-title">${nombre}</h5>
                         <h6>${descrip}</h6>
+                        <h5>$${precio}</h5>
                         <div class="containerPrecioColores d-flex justify-content-between align-items-center mt-3">
                             <button id="btnAgregarCarrito${id}">Agregar</button>
                         </div>
