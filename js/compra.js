@@ -67,7 +67,7 @@ function totalCarritoYFinalizarCompra(contenedorCompra) {
               emailjs.send('service_nghv868', 'template_4kptnsp', templateParams).then(
                 (response) => {
                   console.log('SUCCESS!', response.status, response.text);
-                  finalizarCompra(contenedorCompra, tituloTotal)
+                  finalizarCompra(contenedorCompra, tituloTotal, botonFinalizarCompra)
                 },
                 (error) => {
                   console.log('FAILED...', error);
@@ -77,13 +77,38 @@ function totalCarritoYFinalizarCompra(contenedorCompra) {
     })
 }
 
-function finalizarCompra(contenedor, tituloTotal) {
+function finalizarCompra(contenedor, tituloTotal, botonFinalizarCompra) {
     localStorage.removeItem("arrayCarrito")
     crearCardsCompra([], contenedor)
-    tituloTotal.innerText = "Total: $0"
+
+    let botonSeguirComprando = document.getElementById("btn-seguir-comprando")
+    let tituloCompra = document.getElementById("titulo-compra")
+    ocultar(botonSeguirComprando)
+    ocultar(tituloCompra)
+    ocultar(tituloTotal)
+    ocultar(botonFinalizarCompra)
+
     Swal.fire({
         title: "Compra finalizada",
         text: "Gracias por su compra",
         confirmButtonColor: "darkslategray"
     });
+
+    contenedor.innerHTML = `
+        <h1 class="text-center mt-5">Redirigiendo hacia la pagina principal</h1>
+    `
+
+    setTimeout(function() {
+        window.location.href = "../index.html"
+    }, 3000)
+    
+}
+
+function mostrar(nodo) {
+    nodo.classList.add("show")
+    nodo.classList.remove("hide")
+}
+
+function ocultar(nodo) {
+    nodo.style.display = "none"
 }
