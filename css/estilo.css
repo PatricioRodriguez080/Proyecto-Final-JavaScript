@@ -28,6 +28,8 @@ p {
 .container-logo {
   width: 45px;
   height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .contenido-carrito {
@@ -265,7 +267,7 @@ strong {
   background-color: grey;
   border: none;
   border-radius: 5px;
-  margin: 0px 25%;
+  margin: 0px 25% 20px 25%;
   padding: 4px 0px;
   width: 50%;
 }

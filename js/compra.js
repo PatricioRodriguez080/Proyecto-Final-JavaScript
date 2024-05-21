@@ -56,7 +56,8 @@ function totalCarritoYFinalizarCompra(contenedorCompra) {
             title: "Introduce tu Gmail",
             text: "Te llegara un mensaje de confirmacion (puede que este como spam)",
             input: "email",
-            inputPlaceholder: "Ejemplo@gmail.com"
+            inputPlaceholder: "Ejemplo@gmail.com",
+            confirmButtonColor: "darkslategray"
         });
         if (email) {
             let templateParams = {
@@ -83,5 +84,6 @@ function finalizarCompra(contenedor, tituloTotal) {
     Swal.fire({
         title: "Compra finalizada",
         text: "Gracias por su compra",
-      });
+        confirmButtonColor: "darkslategray"
+    });
 }
