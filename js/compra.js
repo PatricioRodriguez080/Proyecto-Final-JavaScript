@@ -92,15 +92,15 @@ function finalizarCompra(contenedor, tituloTotal, botonFinalizarCompra) {
         title: "Compra finalizada",
         text: "Gracias por su compra",
         confirmButtonColor: "darkslategray"
-    });
+    }).then(() => {
+        contenedor.innerHTML = `
+            <h1 class="text-center mt-5">Redirigiendo hacia la pagina principal</h1>
+        `
+        setTimeout(function() {
+            window.location.href = "../index.html"
+        }, 3000)
+    })
 
-    contenedor.innerHTML = `
-        <h1 class="text-center mt-5">Redirigiendo hacia la pagina principal</h1>
-    `
-
-    setTimeout(function() {
-        window.location.href = "../index.html"
-    }, 3000)
     
 }
 
