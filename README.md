@@ -5,7 +5,7 @@
 
 <div>
   <h2>Descripción del Proyecto</h2>
-  <p>Este proyecto es el resultado de mi trabajo durante el curso de CoderHouse. Pude crear un sitio web interactivo utilizando HTML, CSS, SASS y JavaScript, haciendo uso de las buenas prácticas de desarrollo y librerías tales como SweetAlert2, Toastify y EmailJS. Este proyecto es una simulación de un e-commerce, donde los productos fueron obtenidos mediante un fetch, simulando el consumo de una API.</p>
+  <p>Este proyecto es el resultado de mi trabajo durante el curso de CoderHouse. Pude crear un sitio web interactivo utilizando HTML, CSS, SASS y JavaScript, haciendo uso de las buenas prácticas de desarrollo y librerías tales como SweetAlert2, Toastify, SwiperJS y EmailJS. Este proyecto es una simulación de un e-commerce, donde los productos fueron obtenidos mediante un fetch, simulando el consumo de una API.</p>
 </div>
 
 <div>
