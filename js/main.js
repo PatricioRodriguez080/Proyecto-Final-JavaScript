@@ -41,7 +41,10 @@ async function pedirInfo() {
         const arrayProductos = await response.json()
         return arrayProductos
     } catch (error) {
-        console.log(`Algo paso ${error}`)
+        let containerZapas = document.getElementById("containerZapas")
+        containerZapas.innerHTML = `
+            <h1>Error al cargar productos</h1>
+        `
     }
 }
 

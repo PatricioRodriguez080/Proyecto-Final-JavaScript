@@ -11,7 +11,7 @@ function obtenerCarritoLS() {
     return JSON.parse(localStorage.getItem("arrayCarrito")) || []
 }
 
-function crearCardsCompra(arrayCarrito,contenedorCompra) {
+function crearCardsCompra(arrayCarrito, contenedorCompra) {
     contenedorCompra.innerHTML = ""
 
     arrayCarrito.forEach(({ id, nombre, categoria, unidades, subtotal, img1 }) => {
@@ -61,17 +61,20 @@ function totalCarritoYFinalizarCompra(contenedorCompra) {
         if (email) {
             let templateParams = {
                 to_mail: email
-              };
-              
-              emailjs.send('service_nghv868', 'template_4kptnsp', templateParams).then(
+            };
+
+            emailjs.send('service_nghv868', 'template_4kptnsp', templateParams).then(
                 (response) => {
-                  console.log('SUCCESS!', response.status, response.text);
-                  finalizarCompra(contenedorCompra, tituloTotal, botonFinalizarCompra)
+                    finalizarCompra(contenedorCompra, tituloTotal, botonFinalizarCompra)
                 },
                 (error) => {
-                  console.log('FAILED...', error);
+                    Swal.fire({
+                        title: "Error",
+                        text: "Error al enviar mail de confirmacion",
+                        icon: "error"
+                      });
                 },
-              );
+            );
         }
     })
 }
@@ -94,16 +97,16 @@ function finalizarCompra(contenedor, tituloTotal, botonFinalizarCompra) {
     }).then(() => {
         let containerLoader = document.getElementById("container-loader")
         mostrar(containerLoader)
-        
+
         contenedor.innerHTML = `
             <h1 class="text-center mt-5">Redirigiendo hacia la pagina principal</h1>
         `
-        setTimeout(function() {
+        setTimeout(function () {
             window.location.href = "../index.html"
         }, 3000)
     })
 
-    
+
 }
 
 function mostrar(nodo) {
