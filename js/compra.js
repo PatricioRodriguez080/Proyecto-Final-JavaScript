@@ -93,6 +93,9 @@ function finalizarCompra(contenedor, tituloTotal, botonFinalizarCompra) {
         text: "Gracias por su compra",
         confirmButtonColor: "darkslategray"
     }).then(() => {
+        let containerLoader = document.getElementById("container-loader")
+        mostrar(containerLoader)
+        
         contenedor.innerHTML = `
             <h1 class="text-center mt-5">Redirigiendo hacia la pagina principal</h1>
         `
