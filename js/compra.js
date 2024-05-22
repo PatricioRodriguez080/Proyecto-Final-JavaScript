@@ -8,7 +8,6 @@ function main() {
 }
 
 function obtenerCarritoLS() {
-    // si existe retorno lo que recupero, sino retorno un array vacio //
     return JSON.parse(localStorage.getItem("arrayCarrito")) || []
 }
 

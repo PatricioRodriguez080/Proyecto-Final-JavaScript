@@ -1,7 +1,5 @@
 main()
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 async function main() {
 
     let arrayProductos = await pedirInfo()
@@ -48,7 +46,6 @@ async function pedirInfo() {
 }
 
 function obtenerCarritoLS() {
-    // si existe retorno lo que recupero, sino retorno un array vacio //
     return JSON.parse(localStorage.getItem("arrayCarrito")) || []
 }
 
@@ -57,7 +54,6 @@ function crearTarjetasProductos(productosElegidos) {
     const contenedorTarjetas = document.getElementById("containerZapas")
     contenedorTarjetas.innerHTML = ""
 
-    // Desestructuro el producto leido y creo variables con las propiedades que yo quiera de ese producto leido //
     productosElegidos.forEach(({ id, nombre, categoria, descrip,precio, img1, img2, img3 }) => {
 
         let tarjetaProducto = document.createElement("div")
@@ -104,7 +100,6 @@ function crearTarjetasProductos(productosElegidos) {
         })
     })
 
-    // Inicializo Swiper después de agregar todas las tarjetas al DOM //
     new Swiper("#swiper-1", {
         effect: "fade",
         pagination: {
@@ -190,7 +185,6 @@ function renderizarCarrito(arrayCarrito) {
     let contenedorCarrito = document.getElementById("productosEnCarrito")
     contenedorCarrito.innerHTML = ""
 
-    // Desestructuro el producto leido y me guardo en nuevas variables las propiedades que coincidan con el nombre dado//
     arrayCarrito.forEach(({ id, nombre, categoria, unidades, subtotal, img1 }) => {
 
         let tarjetaProducto = document.createElement("div")
@@ -255,7 +249,6 @@ function restarUnidad(e) {
             arrayCarrito.splice(indiceProducto, 1)
         }
 
-        // Actualizo el carrito del LS para luego renderizar ese mismo con las modificaciones hechas //
         localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito))
         totalCarrito()
         ContadorProductosCarrito()
@@ -275,7 +268,6 @@ function agregarUnidad(e) {
         arrayCarrito[indiceProducto].unidades++
         arrayCarrito[indiceProducto].subtotal = arrayCarrito[indiceProducto].precioUnitario * arrayCarrito[indiceProducto].unidades
 
-        // Actualizo el carrito del LS para luego renderizar ese mismo con las modificaciones hechas //
         localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito))
         totalCarrito()
         ContadorProductosCarrito()
@@ -299,13 +291,10 @@ function eliminarProductoDelCarrito(e) {
     let filaAEliminar = document.getElementById(`tarjetaProducto${id}`)
     filaAEliminar.remove()
 
-    // Me traigo el carrito del LS //
     let carrito = obtenerCarritoLS()
 
-    // Me guardo en el carrito todos los productos que ya estaban menos el que quiero eliminar //
     carrito = carrito.filter(producto => producto.id != id)
 
-    // Actualizo el LS con el contenido filtrado //
     localStorage.setItem("arrayCarrito", JSON.stringify(carrito))
 
     mostrarOcultarMensajeCarrito()
@@ -372,8 +361,8 @@ function funcionalidadesDropdowns(e, arrayProductos) {
 }
 
 function mostrarOcultarOpciones(e) {
-    let dropdown = e.currentTarget; // me guardo en dropdown los datos del evento //
-    let opciones = dropdown.nextElementSibling; // ahora me guardo en opciones el siguiente elemento al dropdown guardado anteriormente, en este caso el menu de opciones //
+    let dropdown = e.currentTarget;
+    let opciones = dropdown.nextElementSibling;
 
     opciones.classList.toggle("hide")
     dropdown.classList.toggle("arrow")
@@ -412,7 +401,6 @@ function filtrarProductosYCrearFiltros(e, arrayProductos) {
     arrayResultado = arrayProductos.filter(producto => producto.categoria == e.target.innerText)
     crearTarjetasProductos(arrayResultado)
 
-    // Relleno los filtros segun por que categoria estoy filtrando //
     const contenedorFiltros = document.getElementById("container-filtros")
     let arrayDeFiltros = ""
     contenedorFiltros.innerHTML = ""
@@ -426,7 +414,6 @@ function filtrarProductosYCrearFiltros(e, arrayProductos) {
         }
     })
 
-    // Le doy funcionalidad a esos botones de filtro creados//
     const botonesFiltro = document.querySelectorAll(".botones-filtro")
     botonesFiltro.forEach(boton => {
         boton.addEventListener("click", (e) => {
