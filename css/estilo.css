@@ -94,6 +94,12 @@ strong {
   display: flex;
   flex-direction: column;
 }
+.nombre-y-eslogan .titulo {
+  font-size: 2.5rem;
+}
+.nombre-y-eslogan .eslogan {
+  font-size: 2rem;
+}
 .nombre-y-eslogan .video-container {
   position: absolute;
   top: 0;
